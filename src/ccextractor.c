@@ -6,6 +6,7 @@ License: GPL 2.0
 #include "ccextractor.h"
 #include <stdio.h>
 #include <locale.h>
+#include <ccx_encoders_helpers.h>
 
 volatile int terminate_asap = 0;
 
@@ -391,7 +392,8 @@ int start_ccx()
 	dinit_libraries(&ctx);
 
 	if (!ret)
-		mprint("\nNo captions were found in input.\n");
+		webvtt_write_minimal_header();
+	mprint("\nNo captions were found in input.\n");
 
 	print_end_msg();
 
